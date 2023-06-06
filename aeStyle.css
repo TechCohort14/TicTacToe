@@ -1,0 +1,117 @@
+:root {
+	--cell-size: 100px;
+	--color: #81c3fd; /* for hover */
+	--color-set: #0275d8; /* when set */
+	--cnc-hover
+	--l: 10px; /* X line-width */
+}
+.board {
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	justify-content: center;
+	align-content: center;
+	justify-items: center;
+	align-items: center;
+	grid-template-columns: repeat(3, auto)
+}
+
+.cell {
+	width: var(--cell-size);
+	height: var(--cell-size);
+	border: 1px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	cursor: pointer;
+}
+/* remove border for edges */
+.cell:nth-child(1), .cell:nth-child(2), .cell:nth-child(3) {
+	border-top: none;
+}
+
+.cell:nth-child(1), .cell:nth-child(4), .cell:nth-child(7) {
+	border-left: none;
+}
+
+.cell:nth-child(3), .cell:nth-child(6), .cell:nth-child(9) {
+	border-right: none;
+}
+
+.cell:nth-child(7), .cell:nth-child(8), .cell:nth-child(9) {
+	border-bottom: none;
+}
+.cell.x, .cell.circle {
+	cursor: not-allowed;
+}
+
+/* for cross */
+.board.x .cell:not(.circle):not(.x):hover {
+	background-image: url('images/gameCheese.png');
+	background-size: 80% 80%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+/* for cross (set) */
+.cell:not(.circle).x {
+	background-image: url('images/gameCheese.png');
+	background-size: 80% 80%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+/* for circle */
+.board.circle .cell:not(.circle):not(.x):hover {
+	background-image: url('images/gameCracker.png');
+	background-size: 80% 80%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+/* for circle (set) */
+.cell:not(.x).circle {
+	background-image: url('images/gameCracker.png');
+	background-size: 80% 80%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.winning-message {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: var(--color-set);
+	justify-content: center;
+	align-items: center;
+	color: white;
+	font-size: 5rem;
+	font-family: 'Courier New', Courier, monospace;
+	flex-direction: column;
+}
+.winning-message button {
+	border-radius: 10px;
+	font-size: 3rem;
+	background-color: white;
+	border: 1px solid var(--color-set);
+	padding: .25em .5em;
+	cursor: pointer;
+}
+
+.winning-message button:hover {
+	background-color: var(--color-set);
+	color: white;
+	border-color: white;
+}
+.winning-message.show {
+	display: flex;
+}
+.cell.x {
+	content: url('images/gameCheese.png');
+  }
+.cell.circle{
+	content: url('images/gameCracker.png');
+
+}
+  
